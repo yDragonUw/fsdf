@@ -190,7 +190,7 @@ local TPPage = Tab:CreateFrame("Teleports")
 local CRPage = Tab:CreateFrame("Novidades")
 
 FPage:CreateLabel("Funções Novas[Use por sua conta em Risco]")
-FPage:CreateLabel("11.11.23 [Não Banível]")
+FPage:CreateLabel("20.11.23 [Não Banível]")
 
 FPage:CreateToggle("Auto Farm", "Seu personagem irá marcar gols automaticamente.", function (arg)
 if arg then
@@ -282,31 +282,6 @@ end)
 LPPage:CreateButton("Resetar Personagem", "Reseta seu Personagem", function()
     game.Players.LocalPlayer.Character:BreakJoints()
     game.Players.LocalPlayer.Character.Humanoid.Health = 0
-end)
-
-LPPage:CreateButton("Fake 250-290ms", "Seu ping e modificado visualmente e fica entre 250 e 290ms", function()
-local PerformanceStats = game:GetService("CoreGui"):WaitForChild("RobloxGui"):WaitForChild("PerformanceStats")
-local PingLabel
-
-for _, Child in ipairs(PerformanceStats:GetChildren()) do
-    if Child.StatsMiniTextPanelClass.TitleLabel.Text == "Ping" then
-        PingLabel = Child.StatsMiniTextPanelClass.ValueLabel
-        break
-    end
-end
-
-local text = "270.00 ms" -- Initialize with a value between 250 ms and 296 ms with two decimal places
-PingLabel:GetPropertyChangedSignal("Text"):Connect(function()
-    PingLabel.Text = text
-end)
-PingLabel.Text = text
-
-while true do
-    local randomValue = math.random(25000, 29600) / 100.0 -- Generate random ping value between 250 ms and 296 ms with two decimal places
-    text = string.format("%.2f ms", randomValue)
-    
-    PingLabel.Text = text
-    wait(0.3) -- Wait for 1 second before updating again
 end)
 
 LPPage:CreateLabel("Alteações no Personagem")
